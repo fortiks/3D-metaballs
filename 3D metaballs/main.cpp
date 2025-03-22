@@ -226,11 +226,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		immediateContext->PSSetConstantBuffers(1, 1, &ResolutionBuffer);
 
 		ID3D11ShaderResourceView* SpheresSRV = MetaballsBuffer.GetSRV();
-
-		if (SpheresSRV == NULL)
-		{
-			throw std::runtime_error("SpheresSRV is null");
-		}
 		
 		immediateContext->PSSetShaderResources(0, 1, &SpheresSRV);
 	
