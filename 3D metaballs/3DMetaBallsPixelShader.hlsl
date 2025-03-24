@@ -109,7 +109,7 @@ Point mapWorld(float3 p)
     {
         Sphere = metaballField(p, Spheres[i].center, Spheres[i].radius);
         sumSpheres += Sphere;
-        float weight = exp(-k * Sphere);
+        float weight = exp(-k * Sphere); //   exponential decay distance(Sphere) of 0 = 1 and distance of 1 is 1 0.00004539992 
         accumulatedColor += weight * Spheres[i].color.xyz;
         totalWeight += weight;
 
@@ -140,9 +140,8 @@ Point mapWorld(float3 p)
 
     if (minDistance == field)
     {
-        
+
         result.color = accumulatedColor / totalWeight;
-        //
         result.light = 1.0;
     }
     else if (minDistance == box)
@@ -235,7 +234,7 @@ float4 rayMarch(float3 ro, float3 rd)
     }
 
     // Background gradient
-    float t = 0.5 * (rd.y + 1.0);
+    float t = 0.5 * (rd.y + 1.0); // adjust to  range [0-1]
     float3 color = lerp(float3(0.0, 0.0, 0.5), float3(0.5, 0.7, 1.0), t);
     return float4(color, 1.0);
 }
