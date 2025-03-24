@@ -73,19 +73,33 @@ std::vector<sphereAnimationData>& sphere, int& SphereCounter)
 				// animation
 				sphereAnimationData sphereData;
 				sphereData.sphereCenter = meatBall.center;
-				if (animationPosX.x != 0.0 && animationPosX.y != 0.0)
+				if (animationPosX.x != 0.0 || animationPosX.y != 0.0)
 				{
+					
+					if (animationPosX.x < animationPosX.y)
+					{
+						animationPosX = ImVec2(animationPosX.y, animationPosX.x);
+					}
 					sphereData.inversX = true;
 				}
-				if (animationPosY.x != 0.0 && animationPosX.y != 0.0)
+				if (animationPosY.x != 0.0 || animationPosX.y != 0.0)
 				{
+					if (animationPosY.x < animationPosY.y)
+					{
+						animationPosY = ImVec2(animationPosY.y, animationPosY.x);
+					}
 					sphereData.inversY = true;
 				}
-				if (animationPosZ.x != 0.0 && animationPosZ.y != 0.0)
+				if (animationPosZ.x != 0.0 || animationPosZ.y != 0.0)
 				{
+					if (animationPosZ.x < animationPosZ.y)
+					{
+						animationPosZ = ImVec2(animationPosZ.y, animationPosZ.x);
+					}
 					sphereData.inversZ = true;
 				}
 
+				
 
 				sphereData.animationPosX = { animationPosX.x, animationPosX.y };
 				sphereData.animationPosY = { animationPosY.x, animationPosY.y };
@@ -102,10 +116,7 @@ std::vector<sphereAnimationData>& sphere, int& SphereCounter)
 
 		if (mapCapacity)
 		{
-			// Set the cursor position to the same location as the "Add" button
-			ImVec2 buttonPos = ImGui::GetItemRectMin();  // Get button position
-			ImVec2 buttonSize = ImGui::GetItemRectSize();  // Get button size
-			//ImGui::SetCursorPos(ImVec2(buttonPos.x + 1.0, buttonPos.y)); // Offset a bit down
+			
 			std::string errorMsg = "Error: Metaballs cannot exceed: " + std::to_string(maxBalls);
 			ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.0f), errorMsg.c_str());
 		}

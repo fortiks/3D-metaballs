@@ -151,7 +151,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		for (int i = 0; i < resolutionData.SphereCounter; i++) {
 
 			// Update X coordinate
-			if (sphere[i].sphereCenter.x < sphere[i].animationPosX.x && !sphere[i].inversX) {
+			if (sphere[i].sphereCenter.x <= sphere[i].animationPosX.x && !sphere[i].inversX) {
 
 				sphere[i].sphereCenter.x += dt.count() * speed;
 
@@ -160,7 +160,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 				}
 			}
 
-			if (sphere[i].sphereCenter.x > sphere[i].animationPosX.y && sphere[i].inversX) {
+			if (sphere[i].sphereCenter.x >= sphere[i].animationPosX.y && sphere[i].inversX) {
 				sphere[i].sphereCenter.x -= dt.count() * speed;
 
 				if (sphere[i].sphereCenter.x <= sphere[i].animationPosX.y) {
@@ -169,7 +169,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			}
 
 			// Update Y coordinate
-			if (sphere[i].sphereCenter.y < sphere[i].animationPosY.x && !sphere[i].inversY) {
+			if (sphere[i].sphereCenter.y <= sphere[i].animationPosY.x && !sphere[i].inversY) {
 				sphere[i].sphereCenter.y += dt.count() * speed;
 
 				if (sphere[i].sphereCenter.y >= sphere[i].animationPosY.x) {
@@ -177,7 +177,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 				}
 			}
 
-			if (sphere[i].sphereCenter.y > sphere[i].animationPosY.y && sphere[i].inversY) {
+			if (sphere[i].sphereCenter.y >= sphere[i].animationPosY.y && sphere[i].inversY) {
 				sphere[i].sphereCenter.y -= dt.count() * speed;
 
 				if (sphere[i].sphereCenter.y <= sphere[i].animationPosY.y) {
@@ -186,7 +186,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			}
 
 			// Update Z coordinate
-			if (sphere[i].sphereCenter.z < sphere[i].animationPosZ.x && !sphere[i].inversZ) {
+			if (sphere[i].sphereCenter.z <= sphere[i].animationPosZ.x && !sphere[i].inversZ) {
 				sphere[i].sphereCenter.z += dt.count() * speed;
 
 				if (sphere[i].sphereCenter.z >= sphere[i].animationPosZ.x) {
@@ -194,7 +194,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 				}
 			}
 
-			if (sphere[i].sphereCenter.z > sphere[i].animationPosZ.y && sphere[i].inversZ) {
+			if (sphere[i].sphereCenter.z >= sphere[i].animationPosZ.y && sphere[i].inversZ) {
 				sphere[i].sphereCenter.z -= dt.count() * speed;
 
 				if (sphere[i].sphereCenter.z <= sphere[i].animationPosZ.y) {
